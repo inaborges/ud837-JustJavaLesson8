@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         priceMessage += "\nAdd chocolate?" + addChocolate;
         priceMessage = priceMessage + "\nQuantity:" + quantity;
         priceMessage = priceMessage + "\nTotal: $" + (price);
-        priceMessage = priceMessage + "\nThank you!";
+        priceMessage = priceMessage + "\n" + getString(R.string.thank_you);
         return priceMessage;
     }
 
