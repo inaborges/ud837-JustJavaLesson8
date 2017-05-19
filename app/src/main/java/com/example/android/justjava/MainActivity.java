@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         boolean hasChocolate = chocolateCheckBox.isChecked();
         EditText clientName = (EditText) findViewById(R.id.client_name);
         String  name = clientName.getText().toString().trim();
-        int price = calculatePrice();
+        int price = calculatePrice(hasChocolate, hasWhippedCream);
         String priceMessage = createOrderSumary (price, hasWhippedCream, hasChocolate, name);
         displayMessage(priceMessage);
 
@@ -66,12 +66,26 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Calculates the price of the order.
      *
+     * @param addWhippedCream is whether or not the user wants whipped cream topping
+     * @param addChocolate  is whether or not the user wants chocolate topping
+     *
      * @return total price
      */
-    private int calculatePrice() {
-        int price = quantity * 5;
-        return price;
+    private int calculatePrice(boolean addWhippedCream, boolean addChocolate) {
+        //Price of 1 cup of coffee
+        int basePrice = 5;
+        // Add 1 if the user wants Whipped Cream
+        if (addWhippedCream){
+            basePrice = basePrice + 1;
+        }
+        // Add 2 if the user wants Chocolate
+        if (addChocolate){
+            basePrice = basePrice + 2;
+        }
+
+        return quantity * basePrice;
     }
+
 
     /**
      * This method is called when the plus button is clicked.
